@@ -3,11 +3,15 @@ import { YoutubeTranscript } from "youtube-transcript";
 // Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
 const handler = async (event) => {
   try {
-    let transcript = await YoutubeTranscript.fetchTranscript("A-PFgCM4jwM");
+    let transcript = ""
+    const transcriptArray = await YoutubeTranscript.fetchTranscript("A-PFgCM4jwM");
+    transcriptArray.forEach(i => {
+      transcript += i.text
+    })
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: transcript[0].text }),
+      body: JSON.stringify({ message: transcript }),
       // // more keys you can return:
       // headers: { "headerName": "headerValue", ... },
       // isBase64Encoded: true,
