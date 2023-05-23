@@ -5,16 +5,16 @@ const handler = async (event) => {
   try {
     let transcript = ""
     const transcriptArray = await YoutubeTranscript.fetchTranscript("A-PFgCM4jwM");
+    
     transcriptArray.forEach(i => {
-      transcript += i.text
+      transcript += i.text + " "
     })
+
+    console.log(transcript);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: transcript }),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
+      body: JSON.stringify({ transcript: transcript }),
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
