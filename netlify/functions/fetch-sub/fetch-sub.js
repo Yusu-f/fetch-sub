@@ -15,6 +15,9 @@ const handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({ transcript: transcript }),
+      Headers: {
+        "Access-Control-Allow-Origin": "https://chat.openai.com/"
+      }
     };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
