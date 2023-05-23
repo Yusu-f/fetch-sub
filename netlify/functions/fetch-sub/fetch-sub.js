@@ -10,15 +10,15 @@ const handler = async (event) => {
         console.log(e.text);
         transcript += e.text.replace(/\n/g, "");
       });
+      console.log(YoutubeTranscript);
+      return {
+        statusCode: 200,
+        body: "transcript",
+        // // more keys you can return:
+        // headers: { "headerName": "headerValue", ... },
+        // isBase64Encoded: true,
+      };
     });
-    console.log(YoutubeTranscript);
-    return {
-      statusCode: 200,
-      body: "transcript",
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
-    };
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
   }
