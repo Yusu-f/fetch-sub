@@ -10,11 +10,11 @@ const handler = async (event) => {
       transcript += i.text + " "
     })
 
-    console.log(transcript);
+    console.log(event.queryStringParameters.v);
 
     return {
       statusCode: 200,
-      body: JSON.stringify({ transcript: transcript }),
+      body: JSON.stringify({ transcript: transcript, query: event.queryStringParameters.v }),
       Headers: {
         "Access-Control-Allow-Origin": "*"
       }
