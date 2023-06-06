@@ -4,17 +4,15 @@ import { YoutubeTranscript } from "youtube-transcript";
 const handler = async (event) => {
   try {
     let transcript = ""
-    const transcriptArray = await YoutubeTranscript.fetchTranscript("A-PFgCM4jwM");
+    const transcriptArray = await YoutubeTranscript.fetchTranscript(event.queryStringParameters.v);
     
     transcriptArray.forEach(i => {
       transcript += i.text + " "
     })
 
-    console.log(event.queryStringParameters.v);
-
     return {
       statusCode: 200,
-      body: JSON.stringify({ transcript: transcript, query: event.queryStringParameters.v }),
+      body: JSON.stringify({ transcript: transcript}),
       Headers: {
         "Access-Control-Allow-Origin": "*"
       }
