@@ -4,15 +4,15 @@ import { YoutubeTranscript } from "youtube-transcript";
 const handler = async (event) => {
   try {
     console.log(event.path);
-    if (event.path == "/fetchjobs") {
-      return {
-        statusCode: 200,
-        body: JSON.stringify({ transcript: "fetchnjobs hit" }),
-        Headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      };
-    } else {
+    // if (event.path == "/fetchjobs") {
+    //   return {
+    //     statusCode: 200,
+    //     body: JSON.stringify({ transcript: "fetchnjobs hit" }),
+    //     Headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //   };
+    // } else {
       let transcript = "";
       const transcriptArray = await YoutubeTranscript.fetchTranscript(
         event.queryStringParameters.v
@@ -29,7 +29,7 @@ const handler = async (event) => {
           "Access-Control-Allow-Origin": "*",
         },
       };
-    }
+    // }
   } catch (error) {
     return { statusCode: 500, body: error.toString() };
   }
