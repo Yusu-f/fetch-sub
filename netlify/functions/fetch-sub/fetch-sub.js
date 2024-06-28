@@ -14,7 +14,7 @@ const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ transcript: transcript}),
       headers: {
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "https://chatgpt.com/"
       }
     };
   } catch (error) {
