@@ -13,7 +13,7 @@ const handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({ transcript: transcript}),
-      Headers: {
+      headers: {
         "Access-Control-Allow-Origin": "*"
       }
     };
