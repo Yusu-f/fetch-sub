@@ -5,7 +5,7 @@ const handler = async (event) => {
   try {
     let transcript = ""
     const transcriptArray = await YoutubeTranscript.fetchTranscript(event.queryStringParameters.v);
-    
+
     transcriptArray.forEach(i => {
       transcript += i.text + " "
     })
